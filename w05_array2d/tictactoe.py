@@ -45,6 +45,8 @@ def play_turn():
         row = input()
         print("Enter the col ")
         col = input()
+        if int(col) > 2 or int(row) > 2:
+            print("Invalid move! Index out of bounds!")
         if grid[int(row)*3+1][int(col)*5+2+int(col)] == ' ':
             if turn == True:
                 grid[int(row)*3+1][int(col)*5+2+int(col)] = 'X'
@@ -55,7 +57,7 @@ def play_turn():
             turn = not turn
             empty = False
         else:
-            print("Invalid move!")
+            print("Spot is already taken!")
 
 while game==True:
     play_turn()
