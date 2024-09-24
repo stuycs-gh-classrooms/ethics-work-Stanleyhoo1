@@ -1,5 +1,8 @@
 grid = []
 
+game_grid = [['' for _ in range(3)] for _ in range(3)]
+
+game = True
 turn = True
 
 def create_row_col():
@@ -45,12 +48,16 @@ def play_turn():
         if grid[int(row)*3+1][int(col)*5+2+int(col)] == ' ':
             if turn == True:
                 grid[int(row)*3+1][int(col)*5+2+int(col)] = 'X'
+                game_grid[int(row)][int(col)] = 'X'
             else:
                 grid[int(row)*3+1][int(col)*5+2+int(col)] = 'O'
+                game_grid[int(row)][int(col)] = 'O'
             turn = not turn
             empty = False
         else:
             print("Invalid move!")
-play_turn()
-display(grid)
+
+while game==True:
+    play_turn()
+    display(grid)
     
